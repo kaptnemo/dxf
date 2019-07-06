@@ -265,8 +265,8 @@ class DXFBase(object):
             raise exceptions.DXFUnexpectedStatusCodeError(response.status_code,
                                                           requests.codes.unauthorized)
 
-        if self._insecure:
-            raise exceptions.DXFAuthInsecureError()
+        # if self._insecure:
+        #     raise exceptions.DXFAuthInsecureError()
 
         parsed = www_authenticate.parse(response.headers['www-authenticate'])
 
@@ -296,7 +296,7 @@ class DXFBase(object):
                 'scope': scope
             })
             url_parts[4] = urlencode(query, True)
-            url_parts[0] = 'https'
+            # url_parts[0] = 'https'
             if self._auth_host:
                 url_parts[1] = self._auth_host
             auth_url = urlparse.urlunparse(url_parts)
